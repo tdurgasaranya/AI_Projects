@@ -1,0 +1,702 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');\
+\
+:root \{\
+    --primary-green: #00ff41;\
+    --secondary-cyan: #00ffff;\
+    --accent-purple: #b700ff;\
+    --bg-dark: #0a0a0a;\
+    --bg-darker: #050505;\
+    --bg-card: #111111;\
+    --text-primary: #e0e0e0;\
+    --text-secondary: #a0a0a0;\
+    --border-color: #333;\
+    --terminal-green: #00ff00;\
+    --matrix-green: #00ff00;\
+\}\
+\
+* \{\
+    margin: 0;\
+    padding: 0;\
+    box-sizing: border-box;\
+\}\
+\
+body \{\
+    font-family: 'Fira Code', monospace;\
+    background: var(--bg-dark);\
+    color: var(--text-primary);\
+    overflow-x: hidden;\
+    position: relative;\
+\}\
+\
+/* Matrix Rain Effect Background */\
+#matrix-bg \{\
+    position: fixed;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+    z-index: -1;\
+    opacity: 0.05;\
+\}\
+\
+/* Glitch Effect */\
+@keyframes glitch \{\
+    0%, 100% \{ transform: translate(0); \}\
+    20% \{ transform: translate(-2px, 2px); \}\
+    40% \{ transform: translate(-2px, -2px); \}\
+    60% \{ transform: translate(2px, 2px); \}\
+    80% \{ transform: translate(2px, -2px); \}\
+\}\
+\
+.glitch \{\
+    position: relative;\
+    animation: glitch 2s infinite;\
+\}\
+\
+.glitch::before,\
+.glitch::after \{\
+    content: attr(data-text);\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+\}\
+\
+.glitch::before \{\
+    animation: glitch 0.3s infinite;\
+    color: var(--secondary-cyan);\
+    z-index: -1;\
+\}\
+\
+.glitch::after \{\
+    animation: glitch 0.3s infinite reverse;\
+    color: var(--accent-purple);\
+    z-index: -2;\
+\}\
+\
+/* Header Styles */\
+header \{\
+    background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);\
+    backdrop-filter: blur(10px);\
+    border-bottom: 1px solid var(--border-color);\
+    padding: 1rem 0;\
+    position: fixed;\
+    width: 100%;\
+    top: 0;\
+    z-index: 1000;\
+\}\
+\
+nav \{\
+    display: flex;\
+    justify-content: space-between;\
+    align-items: center;\
+    max-width: 1400px;\
+    margin: 0 auto;\
+    padding: 0 2rem;\
+\}\
+\
+.logo \{\
+    font-size: 1.2rem;\
+    font-weight: 700;\
+    display: flex;\
+    align-items: center;\
+    color: var(--primary-green);\
+    text-shadow: 0 0 10px var(--primary-green);\
+\}\
+\
+.logo::before \{\
+    content: "$ ";\
+    color: var(--terminal-green);\
+\}\
+\
+.nav-links \{\
+    display: flex;\
+    list-style: none;\
+    gap: 2rem;\
+\}\
+\
+.nav-links a \{\
+    color: var(--text-secondary);\
+    text-decoration: none;\
+    transition: all 0.3s ease;\
+    font-size: 0.9rem;\
+    position: relative;\
+    padding: 0.5rem 1rem;\
+    border: 1px solid transparent;\
+\}\
+\
+.nav-links a::before \{\
+    content: "> ";\
+    color: var(--secondary-cyan);\
+    opacity: 0;\
+    transition: opacity 0.3s ease;\
+\}\
+\
+.nav-links a:hover::before \{\
+    opacity: 1;\
+\}\
+\
+.nav-links a:hover \{\
+    color: var(--primary-green);\
+    border-color: var(--primary-green);\
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);\
+\}\
+\
+/* Hero Section */\
+.hero \{\
+    min-height: 100vh;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    padding: 6rem 2rem 4rem;\
+    position: relative;\
+    background: radial-gradient(circle at center, rgba(0,255,65,0.05) 0%, transparent 70%);\
+\}\
+\
+.hero-content \{\
+    text-align: center;\
+    max-width: 900px;\
+    animation: fadeInUp 1s ease;\
+\}\
+\
+.hero-badge \{\
+    display: inline-block;\
+    background: rgba(0, 255, 65, 0.1);\
+    border: 1px solid var(--primary-green);\
+    color: var(--primary-green);\
+    padding: 0.5rem 1.5rem;\
+    border-radius: 50px;\
+    font-size: 0.9rem;\
+    margin-bottom: 2rem;\
+    animation: pulse 2s infinite;\
+\}\
+\
+@keyframes pulse \{\
+    0%, 100% \{ box-shadow: 0 0 10px rgba(0, 255, 65, 0.3); \}\
+    50% \{ box-shadow: 0 0 20px rgba(0, 255, 65, 0.6); \}\
+\}\
+\
+.hero h1 \{\
+    font-size: 3.5rem;\
+    color: var(--primary-green);\
+    margin-bottom: 1rem;\
+    text-shadow: 0 0 30px rgba(0, 255, 65, 0.5);\
+    font-weight: 700;\
+    line-height: 1.2;\
+\}\
+\
+.hero-subtitle \{\
+    font-size: 1.5rem;\
+    color: var(--secondary-cyan);\
+    margin-bottom: 2rem;\
+    opacity: 0.9;\
+\}\
+\
+.hero-description \{\
+    font-size: 1.1rem;\
+    color: var(--text-secondary);\
+    margin-bottom: 3rem;\
+    line-height: 1.8;\
+    max-width: 700px;\
+    margin-left: auto;\
+    margin-right: auto;\
+\}\
+\
+.hero-stats \{\
+    display: flex;\
+    justify-content: center;\
+    gap: 4rem;\
+    margin-bottom: 3rem;\
+    flex-wrap: wrap;\
+\}\
+\
+.stat-item \{\
+    text-align: center;\
+\}\
+\
+.stat-number \{\
+    font-size: 2.5rem;\
+    color: var(--accent-purple);\
+    font-weight: 700;\
+    display: block;\
+    margin-bottom: 0.5rem;\
+\}\
+\
+.stat-label \{\
+    color: var(--text-secondary);\
+    font-size: 0.9rem;\
+    text-transform: uppercase;\
+    letter-spacing: 1px;\
+\}\
+\
+.hero-buttons \{\
+    display: flex;\
+    justify-content: center;\
+    gap: 1.5rem;\
+    flex-wrap: wrap;\
+\}\
+\
+.btn \{\
+    padding: 1rem 2rem;\
+    border: 1px solid var(--primary-green);\
+    background: transparent;\
+    color: var(--primary-green);\
+    text-decoration: none;\
+    border-radius: 4px;\
+    font-weight: 600;\
+    transition: all 0.3s ease;\
+    display: inline-flex;\
+    align-items: center;\
+    gap: 0.5rem;\
+    font-size: 1rem;\
+\}\
+\
+.btn:hover \{\
+    background: var(--primary-green);\
+    color: var(--bg-dark);\
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);\
+    transform: translateY(-2px);\
+\}\
+\
+.btn-secondary \{\
+    border-color: var(--secondary-cyan);\
+    color: var(--secondary-cyan);\
+\}\
+\
+.btn-secondary:hover \{\
+    background: var(--secondary-cyan);\
+    color: var(--bg-dark);\
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);\
+\}\
+\
+/* Main Content */\
+main \{\
+    max-width: 1400px;\
+    margin: 0 auto;\
+    padding: 4rem 2rem;\
+\}\
+\
+.section-title \{\
+    text-align: center;\
+    margin-bottom: 4rem;\
+    position: relative;\
+\}\
+\
+.section-title h2 \{\
+    font-size: 2.5rem;\
+    color: var(--primary-green);\
+    margin-bottom: 1rem;\
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);\
+    font-weight: 700;\
+\}\
+\
+.section-title::before \{\
+    content: "<!-- ";\
+    position: absolute;\
+    left: -60px;\
+    color: var(--text-secondary);\
+    font-size: 1.5rem;\
+\}\
+\
+.section-title::after \{\
+    content: " -->";\
+    position: absolute;\
+    right: -60px;\
+    color: var(--text-secondary);\
+    font-size: 1.5rem;\
+\}\
+\
+/* Projects Grid */\
+.projects-grid \{\
+    display: grid;\
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));\
+    gap: 2rem;\
+    margin-top: 3rem;\
+\}\
+\
+.project-card \{\
+    background: var(--bg-card);\
+    border: 1px solid var(--border-color);\
+    border-radius: 8px;\
+    overflow: hidden;\
+    transition: all 0.3s ease;\
+    position: relative;\
+\}\
+\
+.project-card::before \{\
+    content: '';\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 2px;\
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-cyan), var(--accent-purple));\
+    transform: scaleX(0);\
+    transition: transform 0.3s ease;\
+\}\
+\
+.project-card:hover::before \{\
+    transform: scaleX(1);\
+\}\
+\
+.project-card:hover \{\
+    transform: translateY(-5px);\
+    box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);\
+    border-color: var(--primary-green);\
+\}\
+\
+.project-header \{\
+    background: linear-gradient(135deg, rgba(0,255,65,0.1), rgba(0,255,255,0.1));\
+    padding: 1.5rem;\
+    border-bottom: 1px solid var(--border-color);\
+\}\
+\
+.project-icon \{\
+    font-size: 2rem;\
+    color: var(--primary-green);\
+    margin-bottom: 0.5rem;\
+\}\
+\
+.project-title \{\
+    font-size: 1.2rem;\
+    color: var(--secondary-cyan);\
+    font-weight: 600;\
+\}\
+\
+.project-content \{\
+    padding: 1.5rem;\
+\}\
+\
+.project-description \{\
+    color: var(--text-secondary);\
+    margin-bottom: 1.5rem;\
+    font-size: 0.9rem;\
+    line-height: 1.6;\
+\}\
+\
+.project-tech \{\
+    display: flex;\
+    flex-wrap: wrap;\
+    gap: 0.5rem;\
+    margin-bottom: 1.5rem;\
+\}\
+\
+.tech-tag \{\
+    background: rgba(0, 255, 65, 0.1);\
+    color: var(--primary-green);\
+    padding: 0.3rem 0.8rem;\
+    border-radius: 4px;\
+    font-size: 0.8rem;\
+    border: 1px solid rgba(0, 255, 65, 0.3);\
+    font-family: 'Fira Code', monospace;\
+\}\
+\
+.project-link \{\
+    display: inline-flex;\
+    align-items: center;\
+    color: var(--secondary-cyan);\
+    text-decoration: none;\
+    font-size: 0.9rem;\
+    transition: all 0.3s ease;\
+    padding: 0.5rem 1rem;\
+    border: 1px solid var(--secondary-cyan);\
+    border-radius: 4px;\
+\}\
+\
+.project-link:hover \{\
+    background: var(--secondary-cyan);\
+    color: var(--bg-dark);\
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);\
+\}\
+\
+.project-link i \{\
+    margin-left: 0.5rem;\
+    transition: transform 0.3s ease;\
+\}\
+\
+.project-link:hover i \{\
+    transform: translateX(5px);\
+\}\
+\
+/* Skills Section */\
+.skills-grid \{\
+    display: grid;\
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\
+    gap: 2rem;\
+    margin-top: 3rem;\
+\}\
+\
+.skill-card \{\
+    background: var(--bg-card);\
+    border: 1px solid var(--border-color);\
+    border-radius: 8px;\
+    padding: 2rem;\
+    text-align: center;\
+    transition: all 0.3s ease;\
+    position: relative;\
+    overflow: hidden;\
+\}\
+\
+.skill-card::after \{\
+    content: '';\
+    position: absolute;\
+    top: -50%;\
+    left: -50%;\
+    width: 200%;\
+    height: 200%;\
+    background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.1), transparent);\
+    transform: rotate(45deg);\
+    transition: all 0.5s ease;\
+    opacity: 0;\
+\}\
+\
+.skill-card:hover::after \{\
+    animation: shine 0.5s ease;\
+\}\
+\
+@keyframes shine \{\
+    0% \{ transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; \}\
+    50% \{ opacity: 1; \}\
+    100% \{ transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; \}\
+\}\
+\
+.skill-card:hover \{\
+    transform: translateY(-5px);\
+    border-color: var(--primary-green);\
+    box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);\
+\}\
+\
+.skill-icon \{\
+    font-size: 2.5rem;\
+    color: var(--accent-purple);\
+    margin-bottom: 1rem;\
+\}\
+\
+.skill-title \{\
+    font-size: 1.1rem;\
+    color: var(--primary-green);\
+    margin-bottom: 0.5rem;\
+    font-weight: 600;\
+\}\
+\
+.skill-level \{\
+    display: flex;\
+    justify-content: center;\
+    gap: 0.3rem;\
+    margin-top: 1rem;\
+\}\
+\
+.skill-bar \{\
+    width: 8px;\
+    height: 30px;\
+    background: var(--border-color);\
+    border-radius: 2px;\
+    overflow: hidden;\
+\}\
+\
+.skill-fill \{\
+    height: 100%;\
+    background: linear-gradient(to top, var(--primary-green), var(--secondary-cyan));\
+    animation: fillBar 1s ease forwards;\
+\}\
+\
+/* Contact Section */\
+.contact \{\
+    background: var(--bg-darker);\
+    padding: 4rem 2rem;\
+    text-align: center;\
+    border-top: 1px solid var(--border-color);\
+    position: relative;\
+\}\
+\
+.contact::before \{\
+    content: '';\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 1px;\
+    background: linear-gradient(90deg, transparent, var(--primary-green), transparent);\
+    animation: scan 3s linear infinite;\
+\}\
+\
+@keyframes scan \{\
+    0% \{ transform: translateX(-100%); \}\
+    100% \{ transform: translateX(100%); \}\
+\}\
+\
+.contact h2 \{\
+    font-size: 2rem;\
+    color: var(--primary-green);\
+    margin-bottom: 1rem;\
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);\
+\}\
+\
+.contact-info \{\
+    display: flex;\
+    justify-content: center;\
+    gap: 3rem;\
+    margin-top: 2rem;\
+    flex-wrap: wrap;\
+\}\
+\
+.contact-item \{\
+    display: flex;\
+    align-items: center;\
+    gap: 1rem;\
+    padding: 1rem 2rem;\
+    background: var(--bg-card);\
+    border: 1px solid var(--border-color);\
+    border-radius: 8px;\
+    transition: all 0.3s ease;\
+    text-decoration: none;\
+    color: var(--text-primary);\
+\}\
+\
+.contact-item:hover \{\
+    border-color: var(--primary-green);\
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);\
+    transform: translateY(-3px);\
+\}\
+\
+.contact-item i \{\
+    font-size: 1.5rem;\
+    color: var(--secondary-cyan);\
+\}\
+\
+.contact-details h3 \{\
+    font-size: 0.9rem;\
+    color: var(--text-secondary);\
+    margin-bottom: 0.2rem;\
+\}\
+\
+.contact-details p \{\
+    font-size: 1rem;\
+    color: var(--primary-green);\
+    font-weight: 600;\
+\}\
+\
+/* Footer */\
+footer \{\
+    background: var(--bg-darker);\
+    padding: 2rem;\
+    text-align: center;\
+    border-top: 1px solid var(--border-color);\
+    color: var(--text-secondary);\
+    font-size: 0.9rem;\
+\}\
+\
+footer::before \{\
+    content: "// ";\
+    color: var(--primary-green);\
+\}\
+\
+/* Scroll to top button */\
+.scroll-top \{\
+    position: fixed;\
+    bottom: 30px;\
+    right: 30px;\
+    width: 50px;\
+    height: 50px;\
+    background: var(--bg-card);\
+    border: 1px solid var(--primary-green);\
+    border-radius: 50%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    cursor: pointer;\
+    opacity: 0;\
+    visibility: hidden;\
+    transition: all 0.3s ease;\
+    z-index: 1000;\
+    color: var(--primary-green);\
+\}\
+\
+.scroll-top.active \{\
+    opacity: 1;\
+    visibility: visible;\
+\}\
+\
+.scroll-top:hover \{\
+    background: var(--primary-green);\
+    color: var(--bg-dark);\
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);\
+\}\
+\
+/* Animations */\
+@keyframes fadeInUp \{\
+    from \{\
+        opacity: 0;\
+        transform: translateY(20px);\
+    \}\
+    to \{\
+        opacity: 1;\
+        transform: translateY(0);\
+    \}\
+\}\
+\
+@keyframes fillBar \{\
+    from \{ height: 0; \}\
+\}\
+\
+/* Loading Animation */\
+.loading-bar \{\
+    position: fixed;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 3px;\
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-cyan), var(--accent-purple));\
+    animation: loading 2s ease-in-out;\
+    z-index: 9999;\
+\}\
+\
+@keyframes loading \{\
+    0% \{ transform: translateX(-100%); \}\
+    100% \{ transform: translateX(100%); \}\
+\}\
+\
+/* Responsive Design */\
+@media (max-width: 768px) \{\
+    .nav-links \{\
+        display: none;\
+    \}\
+\
+    .hero \{\
+        padding: 6rem 1rem 4rem;\
+    \}\
+\
+    .hero h1 \{\
+        font-size: 2.5rem;\
+    \}\
+\
+    .hero-subtitle \{\
+        font-size: 1.2rem;\
+    \}\
+\
+    .hero-stats \{\
+        gap: 2rem;\
+    \}\
+\
+    .section-title::before,\
+    .section-title::after \{\
+        display: none;\
+    \}\
+\
+    .projects-grid \{\
+        grid-template-columns: 1fr;\
+    \}\
+\
+    .contact-info \{\
+        flex-direction: column;\
+        align-items: center;\
+    \}\
+\}}
